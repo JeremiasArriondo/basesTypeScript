@@ -1,6 +1,10 @@
 import { useState } from "react"
+//Si quiero hacer opcional el initialValue simplemente agrego el ?
+interface Props {
+    initialValue?: number
+}
 
-export const Counter = ({ initialValue = 0 }) => {
+export const Counter = ({ initialValue = 0 }: Props) => {
     
     const [counter, setCounter] = useState(initialValue)
 
