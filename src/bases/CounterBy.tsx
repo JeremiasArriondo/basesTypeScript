@@ -3,24 +3,25 @@ import { useState } from "react"
 interface Props {
     initialValue?: number
 }
+interface CounterState {
+    counter: number,
+    clicks: number
+}
 
 export const CounterBy = ({ initialValue = 5 }: Props) => {
     //Utilizando un objeto como estado inicial
-    const [counterState, setCounterState] = useState({
+    const [{counter, clicks}, setCounterState] = useState<CounterState>({
         counter: initialValue,
         clicks: 0
     })
-
-    //Desestructuracion del estado
-    const {counter, clicks} = counterState;
     //Manejando el estado previo
     const handleClick = ( value: number) => {
+        //setCounterState( ({clicks, counter})=> 
         setCounterState( prev => ({
             counter: prev.counter + value,
             clicks: prev.clicks +1
         }));
     }
-
     return (
         <>
             <h1>Counter by: { counter }</h1>
